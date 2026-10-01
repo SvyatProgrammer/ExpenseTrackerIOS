@@ -1,9 +1,10 @@
 import SwiftUI
 import SwiftData
 
-struct AddExpenseView: View {
+struct EditExpenseView: View {
     
     var modelContext : ModelContext
+    var expense : Expense
     
     @Environment(\.dismiss) private var dismiss
     
@@ -12,6 +13,16 @@ struct AddExpenseView: View {
     @State private var category = "Food"
     @State private var date = Date()
     @State private var showError = false
+    
+    init(modelContext: ModelContext, expense: Expense) {
+        self.modelContext = modelContext
+        self.expense = expense
+        
+        _amount = State(initialValue: String(expense.amount))
+        _description = State(initialValue: expense.title)
+        _category = State(initialValue: expense.category)
+        _date = State(initialValue: expense.date)
+    }
     
     var body: some View {
         NavigationStack {
@@ -32,12 +43,14 @@ struct AddExpenseView: View {
                 }
                 
                 Section {
-                    Button("Add Expense") {
+                    Button("Edit Expense") {
                         saveExpense()
+                        
+                        dismiss()
                     }
                 }
             }
-            .navigationTitle("Add Expense")
+            .navigationTitle("Edit Expense")
             .alert("Invalid amount", isPresented: $showError) {
                 Button("OK", role: .cancel) { }
             } message: {
@@ -52,9 +65,10 @@ struct AddExpenseView: View {
             return
         }
         
-        let expense = Expense(amount: amount, title: description, category: category, date: date)
-        
-        modelContext.insert(expense)
+        expense.amount = amount
+        expense.title = description
+        expense.category = category
+        expense.date = date
         
         dismiss()
     }

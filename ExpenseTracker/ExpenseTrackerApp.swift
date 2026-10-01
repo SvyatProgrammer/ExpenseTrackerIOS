@@ -5,7 +5,7 @@ import SwiftData
 struct ExpenseTrackerApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            MainTabView()
         }
         .modelContainer(for: Expense.self)
     }
