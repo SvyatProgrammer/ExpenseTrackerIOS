@@ -8,7 +8,10 @@ struct MainTabView: View {
                 .tabItem {
                     Label("Home", systemImage: "house")
                 }
-            
+            ExpensesView()
+                .tabItem {
+                    Label("Expenses", systemImage: "wallet.pass")
+                }
             StatisticsView()
                 .tabItem {
                     Label("Statistics", systemImage: "chart.bar")
