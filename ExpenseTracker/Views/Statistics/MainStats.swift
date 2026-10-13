@@ -6,7 +6,7 @@ struct MainStats : View {
     let averageSpent : Double
     let biggestSpent : Double
     
-    @AppStorage("currency") private var currency = "USD"
+    @AppStorage("currency") private var currency : String = Currencies.usd.rawValue
     
     var body: some View {
         Section {

@@ -13,7 +13,7 @@ struct EditExpenseView: View {
     @State private var category = "Food"
     @State private var date = Date()
     @State private var showError = false
-    @AppStorage("currency") private var currency = "USD"
+    @AppStorage("currency") private var currency : String = Currencies.usd.rawValue
     
     init(modelContext: ModelContext, expense: Expense) {
         self.modelContext = modelContext

@@ -7,7 +7,7 @@ struct ExpensesView: View {
     @Query(sort: \Expense.date, order: .reverse)
     private var expenses: [Expense]
     
-    @AppStorage("currency") private var currency = "USD"
+    @AppStorage("currency") private var currency : String = Currencies.usd.rawValue
     @State private var selectedExpense: Expense?
     
     var body: some View {

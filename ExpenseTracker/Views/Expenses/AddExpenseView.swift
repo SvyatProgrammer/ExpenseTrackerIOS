@@ -12,7 +12,7 @@ struct AddExpenseView: View {
     @State private var category = "Food"
     @State private var date = Date()
     @State private var showError = false
-    @AppStorage("currency") private var currency = "USD"
+    @AppStorage("currency") private var currency : String = Currencies.usd.rawValue
     
     var body: some View {
         NavigationStack {

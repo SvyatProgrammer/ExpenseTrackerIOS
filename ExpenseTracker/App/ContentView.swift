@@ -10,7 +10,7 @@ struct ContentView: View {
     
     @State private var selectedExpense : Expense?
     
-    @AppStorage("currency") private var currency = "USD"
+    @AppStorage("currency") private var currency : String = Currencies.usd.rawValue
     @AppStorage("appTheme") private var appTheme = "system"
     
     private var filteredExpenses : [Expense] {
@@ -49,7 +49,6 @@ struct ContentView: View {
                     } else {
                         List {
                             ForEach(filteredExpenses) { expense in
-                                // Вынести в отдельный класс
                                 ExpenseRow(expense: expense, currency: currency)
                                 .swipeActions(edge: .trailing) {
                                     Button {

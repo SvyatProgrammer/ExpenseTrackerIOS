@@ -2,22 +2,16 @@ import SwiftUI
 
 struct SettingsView: View {
     
-    @AppStorage("currency") private var currency = "USD"
+    @AppStorage("currency") private var currency : String = Currencies.usd.rawValue
     @AppStorage("appTheme") private var appTheme = "system"
-    
-    let currencies = [
-        "USD",
-        "EUR",
-        "BLR"
-    ]
     
     var body: some View {
         NavigationStack {
             Form {
                 Section("Main") {
                     Picker("Currency", selection: $currency) {
-                        ForEach(currencies, id: \.self) { currency in
-                            Text(currency)
+                        ForEach(Currencies.allCases) { currency in
+                            Text(currency.title).tag(currency.title)
                         }
                     }
                 }
