@@ -8,12 +8,13 @@ struct EditExpenseView: View {
     
     @Environment(\.dismiss) private var dismiss
     
+    @AppStorage("currency") private var currency : String = Currencies.usd.title
+    
     @State private var amount = ""
     @State private var description = ""
     @State private var category = "Food"
     @State private var date = Date()
     @State private var showError = false
-    @AppStorage("currency") private var currency : String = Currencies.usd.rawValue
     
     init(modelContext: ModelContext, expense: Expense) {
         self.modelContext = modelContext

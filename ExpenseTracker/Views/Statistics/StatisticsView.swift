@@ -7,7 +7,7 @@ struct StatisticsView: View {
     @Query
     private var expenses : [Expense]
     
-    @AppStorage("currency") private var currency : String = Currencies.usd.rawValue
+    @AppStorage("currency") private var currency : String = Currencies.usd.title
     
     @State private var selectedPeriod : TimePeriod = .thisMonth
     @State private var customStartDate : Date = Calendar.current.date(byAdding: .month, value: -1, to: Date()) ?? Date()

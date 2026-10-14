@@ -56,13 +56,16 @@ struct ExpenseTrackerWidgetEntryView : View {
 }
 
 struct ExpenseTrackerWidget: Widget {
-    let kind: String = "ExpenseTrackerWidget"
+    let kind: String = "ExpenseWidgetTracker"
 
     var body: some WidgetConfiguration {
-        AppIntentConfiguration(kind: kind, intent: ConfigurationAppIntent.self, provider: Provider()) { entry in
-            ExpenseTrackerWidgetEntryView(entry: entry)
+        StaticConfiguration(kind: kind, provider: ExpenseTimelineProvider()) { entry in
+            ExpenseWidgetView(entry: entry)
                 .containerBackground(.fill.tertiary, for: .widget)
         }
+        .configurationDisplayName("Расходы")
+        .description("Показывает общую сумму и последние траты.")
+        .supportedFamilies([.systemMedium, .systemLarge])
     }
 }
 

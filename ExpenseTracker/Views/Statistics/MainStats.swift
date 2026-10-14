@@ -2,11 +2,11 @@ import SwiftUI
 
 struct MainStats : View {
     
+    @AppStorage("currency") private var currency : String = Currencies.usd.title
+    
     let totalSpent : Double
     let averageSpent : Double
     let biggestSpent : Double
-    
-    @AppStorage("currency") private var currency : String = Currencies.usd.rawValue
     
     var body: some View {
         Section {

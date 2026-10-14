@@ -3,8 +3,9 @@ import SwiftUI
 
 struct ExpenseRow : View {
     
+    @AppStorage("currency") private var currency : String = Currencies.usd.title
+
     let expense : Expense
-    let currency : String
     
     var body: some View {
         HStack {

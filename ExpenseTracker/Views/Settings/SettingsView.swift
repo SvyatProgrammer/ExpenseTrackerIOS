@@ -2,7 +2,7 @@ import SwiftUI
 
 struct SettingsView: View {
     
-    @AppStorage("currency") private var currency : String = Currencies.usd.rawValue
+    @AppStorage("currency") private var currency : String = Currencies.usd.title
     @AppStorage("appTheme") private var appTheme = "system"
     
     var body: some View {

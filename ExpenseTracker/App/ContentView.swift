@@ -8,10 +8,10 @@ struct ContentView: View {
     @Query(sort: \Expense.date, order: .reverse)
     private var expenses : [Expense]
     
-    @State private var selectedExpense : Expense?
-    
-    @AppStorage("currency") private var currency : String = Currencies.usd.rawValue
+    @AppStorage("currency") private var currency : String = Currencies.usd.title
     @AppStorage("appTheme") private var appTheme = "system"
+    
+    @State private var selectedExpense : Expense?
     
     private var filteredExpenses : [Expense] {
         let calendar = Calendar.current
@@ -49,7 +49,7 @@ struct ContentView: View {
                     } else {
                         List {
                             ForEach(filteredExpenses) { expense in
-                                ExpenseRow(expense: expense, currency: currency)
+                                ExpenseRow(expense: expense)
                                 .swipeActions(edge: .trailing) {
                                     Button {
                                         selectedExpense = expense

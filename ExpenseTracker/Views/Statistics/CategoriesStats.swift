@@ -2,7 +2,7 @@ import SwiftUI
 
 struct CategoriesStats: View {
     
-    @AppStorage("currency") private var currency : String = Currencies.usd.rawValue
+    @AppStorage("currency") private var currency : String = Currencies.usd.title
     
     let filtredExpenses : [Expense]
     let totalSpent : Double
@@ -19,7 +19,7 @@ struct CategoriesStats: View {
                 ? total / totalSpent
                 : 0.0
                 NavigationLink {
-                    CategoryDetailView(category: category, expenses:  filtredExpenses, currency: currency, isEditable: false)
+                    CategoryDetailView(category: category, expenses:  filtredExpenses, isEditable: false)
                 } label: {
                     HStack(spacing: 12) {
                         Image(systemName: category.icon)

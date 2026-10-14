@@ -3,7 +3,7 @@ import Charts
 
 struct BarMarkStats: View {
     
-    @AppStorage("currency") private var currency : String = Currencies.usd.rawValue
+    @AppStorage("currency") private var currency : String = Currencies.usd.title
     
     let filtredExpenses : [Expense]
     let totalSpent : Double

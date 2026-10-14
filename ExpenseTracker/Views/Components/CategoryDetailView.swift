@@ -2,9 +2,11 @@ import SwiftUI
 import SwiftData
 
 struct CategoryDetailView: View {
+    
+    @AppStorage("currency") private var currency : String = Currencies.usd.title
+    
     let category: ExpenseCategory
     let expenses: [Expense]
-    let currency: String
     var isEditable: Bool = false
 
     @Environment(\.modelContext) private var modelContext
